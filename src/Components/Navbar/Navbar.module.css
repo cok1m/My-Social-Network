@@ -7,3 +7,7 @@
 .item {
   color: white;
 }
+
+.active {
+  border: 1px solid black;
+}
