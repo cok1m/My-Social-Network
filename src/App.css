@@ -11,20 +11,4 @@
   /* grid-gap: 10px; */
 }
 
-.header {
-  grid-area: header;
-  background-color: green;
-}
 
-.header img {
-  width: 50px;
-}
-.nav {
-  grid-area: nav;
-  background-color: lightgreen;
-}
-
-.content {
-  grid-area: content;
-  background-color: darkgreen;
-}
