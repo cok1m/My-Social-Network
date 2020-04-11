@@ -2,13 +2,6 @@ import React from 'react';
 import c from './Post.module.css';
 
 const Post = (props) => {
-  let likeOrLikes = () => {
-    if (props.likecount < 2) {
-      return "like"
-    } else {
-      return 'likes'
-    }
-  }
 
   return (
     <div className={c.item}>
@@ -16,7 +9,7 @@ const Post = (props) => {
       {props.message}
       <div>
         <span>
-          {likeOrLikes()}: {props.likecount}
+          likes: {props.likescount}
           </span>
       </div>
     </div>
