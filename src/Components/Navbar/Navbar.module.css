@@ -1,13 +1,24 @@
 .nav {
   grid-area: nav;
   background-color: lightgreen;
+  padding: 20px;
 }
-
 
 .item {
-  color: white;
+  padding: 5px;
 }
 
-.active {
-  border: 1px solid black;
+
+.item a {
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.item a:hover {
+  color: rgb(238, 231, 194);
+}
+
+.item a.activeLink {
+  color: gold;
 }
