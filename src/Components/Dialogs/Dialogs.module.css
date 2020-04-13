@@ -1,25 +1,6 @@
 .dialogs {
   display: grid;
   grid-template-columns: 3fr 9fr;
+  height: 500px;
 }
 
-.dialogs_items {
-  padding: 10px;
-  font-size: 25px;
-}
-.dialogs_items .dialog {
-
-}
-
-.dialogs_items .active {
-  color: gold;
-}
-
-.messages {
-  padding: 10px;
-  font-size: 20px;
-}
-
-.messages .message {
-  
-}

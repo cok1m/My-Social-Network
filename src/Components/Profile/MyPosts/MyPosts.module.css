@@ -1,0 +1,12 @@
+.postsBlock {
+  padding: 10px;
+}
+
+.posts {
+  margin-top: 10px
+}
+
+.postsBlock button {
+  font-size: 25px;
+  font-weight: bold;
+}

@@ -1,0 +1,18 @@
+.descriptionBlock {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  margin: 10px;
+}
+
+.descriptionBlock img {
+  width: 300px;
+}
+
+.descriptionBlock p:first-child {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.descriptionBlock p {
+  font-size: 25px;
+}

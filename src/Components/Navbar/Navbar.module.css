@@ -1,24 +1,65 @@
 .nav {
+  display: grid;
   grid-area: nav;
-  background-color: lightgreen;
+  background-color: rgb(249, 249, 249);
   padding: 20px;
+  grid-template-rows: repeat(5fr 30px);
+  align-content: start;  
 }
 
 .item {
-  padding: 5px;
-}
-
-
-.item a {
-  color: white;
+  box-sizing: border-box;
+  display: grid;
+  width: 150px;
+  height: 40px;
+  padding-left: 25px;
+  margin: 0 auto;
+  color: black;
   font-size: 20px;
   text-decoration: none;
+  align-items: center;
+  transition: background-color 0.2s;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  -webkit-transition: background-color 0.2s;
+  -moz-transition: background-color 0.2s;
+  -ms-transition: background-color 0.2s;
+  -o-transition: background-color 0.2s;
 }
 
-.item a:hover {
-  color: rgb(238, 231, 194);
+.item:last-child {
+  margin-top: 30px;
 }
 
-.item a.activeLink {
-  color: gold;
+.item:hover {
+  color: white;
+  background-color: rgb(170, 170, 170);
+}
+
+.item.activeLink {
+  color: black;
+  font-weight: bold;
+}
+
+.friends {
+  margin-top: 50px;
+  box-sizing: border-box;
+  height: 150px;
+  display: grid;
+  grid-template-columns: 60px 60px 60px;
+  grid-template-rows: 50px 50px;
+  grid-template-areas: "title title title"
+                        "circle circle circle"
+                        "friend friend friend";
+  justify-items: center;
+  align-items: center;
+}
+
+.title {
+  grid-area: title;
+  font-size: 30px;
+  font-weight: bold;
 }
