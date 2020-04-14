@@ -4,11 +4,13 @@ import DialogItem from './DialogItem/DialogItem';
 import Message from './Messages/Message';
 
 const Dialogs = (props) => {
-  let textarea = React.createRef();
 
-  let addPost = () => {
-    let text = textarea.current.value;
-    alert(text);
+  let addDialogMessage = () => {
+    props.addDialogMessage()
+  }
+
+  let onDialogMessageChange = (event) => {
+    props.updateNewDialogMessage(event.target.value)
   }
 
   let dialogsElements = props.state.dialogs.map(dialog => {
@@ -26,8 +28,12 @@ const Dialogs = (props) => {
       </div>
       <div className={styles.messages}>
         {messagesElements}
-        <textarea ref={textarea}></textarea>
-        <button onClick={addPost}>BUTTON</button>
+        <textarea 
+          onChange={onDialogMessageChange}
+          value={props.state.newDialogMessage}
+          placeholder="Введите текст"
+        />
+        <button onClick={addDialogMessage}>BUTTON</button>
       </div>  
     </div>
   )
