@@ -4,7 +4,7 @@ import MyPosts from './MyPosts/MyPosts';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 const Profile = (props) => {
-  let profileInfosElements = props.state.profileInfos
+  let profileInfosElements = props.profilePage.profileInfos
   .filter(info => info.id === 1)
   .map(info => {
     return (
@@ -22,7 +22,11 @@ const Profile = (props) => {
   return (
     <div className>
       {profileInfosElements}
-      <MyPosts posts={props.state.posts} addPost={props.addPost} />
+      <MyPosts posts={props.profilePage.posts}
+               addPost={props.addPost} 
+               newPostText={props.profilePage.newPostText} 
+               updateNewPostText={props.updateNewPostText}         
+      />
     </div>
   )
 }
