@@ -32,7 +32,6 @@ const App = (props) => {
                 dialogsPage={props.state.dialogsPage} 
                 dispatch={props.dispatch}
               />
-
             )}
           } 
         />

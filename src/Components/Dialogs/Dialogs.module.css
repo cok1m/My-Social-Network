@@ -1,6 +1,10 @@
 .dialogs {
   display: grid;
   grid-template-columns: 3fr 9fr;
-  height: 500px;
 }
 
+.dialogsPage textarea {
+  width: 100%;
+  height: 200px;
+  border: 1px solid black;
+}

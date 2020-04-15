@@ -2,16 +2,16 @@ import React from 'react';
 import styles from './Dialogs.module.css'
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Messages/Message';
-import { addDialogMessageActionCreator, updateNewDialogMessageActionCreator } from '../../Redux/state';
+import { sendMessageCreator, updateNewMessageBodyCreator } from '../../Redux/dialogsReducer';
 
 const Dialogs = (props) => {
 
-  let addDialogMessage = () => {
-    props.dispatch(addDialogMessageActionCreator())
+  let onSendMessageClick = () => {
+    props.dispatch(sendMessageCreator())
   }
 
-  let onDialogMessageChange = (event) => {
-    props.dispatch(updateNewDialogMessageActionCreator(event.target.value))
+  let onNewMessageChange = (event) => {
+    props.dispatch(updateNewMessageBodyCreator(event.target.value))
   }
 
   let dialogsElements = props.dialogsPage.dialogs.map(dialog => {
@@ -28,14 +28,21 @@ const Dialogs = (props) => {
         {dialogsElements}
       </div>
       <div className={styles.messages}>
-        {messagesElements}
-        <textarea 
-          onChange={onDialogMessageChange}
-          value={props.dialogsPage.newDialogMessage}
-          placeholder="Введите текст"
-        />
-        <button onClick={addDialogMessage}>BUTTON</button>
-      </div>  
+        <div>{messagesElements}</div>
+        <div>
+          <div>          
+            <textarea 
+              autoFocus='true'
+              onChange={onNewMessageChange}
+              value={props.dialogsPage.newMessageBody}
+              placeholder="Введите текст"
+            />
+          </div>
+          <div>
+            <button onClick={onSendMessageClick}>BUTTON</button>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
