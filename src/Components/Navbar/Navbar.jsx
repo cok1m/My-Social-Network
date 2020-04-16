@@ -10,6 +10,7 @@ const Navbar = (props) => {
         <NavLink className={styles.item} activeClassName={styles.activeLink} to="/dialogs">Messages</NavLink>
         <NavLink className={styles.item} activeClassName={styles.activeLink} to="/news">News</NavLink>
         <NavLink className={styles.item} activeClassName={styles.activeLink} to='/music'>Music</NavLink>
+        <NavLink className={styles.item} activeClassName={styles.activeLink} to='users'>Friends</NavLink>
         <NavLink className={styles.item} activeClassName={styles.activeLink} to='settings'>Settings</NavLink>
     </nav>
   )

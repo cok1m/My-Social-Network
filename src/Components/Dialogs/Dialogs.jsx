@@ -2,24 +2,23 @@ import React from 'react';
 import styles from './Dialogs.module.css'
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Messages/Message';
-import { sendMessageCreator, updateNewMessageBodyCreator } from '../../Redux/dialogsReducer';
 
 const Dialogs = (props) => {
 
   let onSendMessageClick = () => {
-    props.dispatch(sendMessageCreator())
+    props.sendMessage();
   }
 
   let onNewMessageChange = (event) => {
-    props.dispatch(updateNewMessageBodyCreator(event.target.value))
+    props.updateNewMessageBody(event.target.value);
   }
 
-  let dialogsElements = props.dialogsPage.dialogs.map(dialog => {
-    return <DialogItem name={dialog.name} id={dialog.id} />
+  let dialogsElements = props.dialogs.map(dialog => {
+    return <DialogItem name={dialog.name} key={dialog.id} id={dialog.id} />
   })
   
-  let messagesElements = props.dialogsPage.messages.map(message => {
-    return <Message message={message.message} />
+  let messagesElements = props.messages.map(message => {
+    return <Message message={message.message} key={message.id} />
   })
 
   return (
@@ -32,9 +31,9 @@ const Dialogs = (props) => {
         <div>
           <div>          
             <textarea 
-              autoFocus='true'
+              autoFocus={true}
               onChange={onNewMessageChange}
-              value={props.dialogsPage.newMessageBody}
+              value={props.newMessageBody}
               placeholder="Введите текст"
             />
           </div>

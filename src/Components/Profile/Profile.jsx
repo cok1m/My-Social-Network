@@ -1,14 +1,15 @@
 import React from 'react';
-import styles from './Profile.module.css';
-import MyPosts from './MyPosts/MyPosts';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
+import MyPostsContainer from './MyPosts/MyPostsContainer';
+import store from '../../Redux/store';
 
 const Profile = (props) => {
-  let profileInfosElements = props.profilePage.profileInfos
+  let profileInfosElements = store.getState().profilePage.profileInfos
   .filter(info => info.id === 1)
   .map(info => {
     return (
       <ProfileInfo
+        key={info.id}
         id={info.id}
         name={info.name}
         age={info.age}
@@ -22,10 +23,7 @@ const Profile = (props) => {
   return (
     <div className>
       {profileInfosElements}
-      <MyPosts posts={props.profilePage.posts}
-               newPostText={props.profilePage.newPostText} 
-               dispatch={props.dispatch}
-      />
+      <MyPostsContainer />
     </div>
   )
 }

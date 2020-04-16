@@ -10,7 +10,7 @@ let store = {
         {id: 1, message: 'Hi, how are you?', likesCount: 12},
         {id: 2, message: 'It\'s my first post', likesCount: 20},
       ],
-      newPostText: '123',
+      newPostText: '',
       profileInfos: [
         {id:1, name: "Konstantin Kim", age: 27, city: 'Almaty', birth: "09.20.1992", avatar: "https://cdn.pixabay.com/photo/2013/07/13/10/08/pig-156610__340.png"},
         {id:2, name: "Ivan Petrov", age: 30, city: "Astata", birth: "10.10.1989"}

@@ -1,0 +1,36 @@
+.userProfile {
+  display: grid;
+  margin: 25px 0 0 25px;
+  grid-template-columns: 225px 1fr;
+  grid-template-areas: 'avatar description';
+  background-color: rgb(249, 249, 249);
+  border-radius: 50px;
+  padding: 5px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+}
+
+.avatar img {
+  width: 225px;
+}
+
+.avatar {
+  display: grid;
+  grid-area: avatar;
+  justify-items: center;
+}
+
+.avatar button {
+  font-size: 30px;
+  color: white;
+  background-color: rgb(122, 106, 99);
+  border: 2px solid black;
+}
+
+.users .description {
+  margin-left: 25px;
+  grid-area: description;
+  font-size: 30px;
+}
