@@ -1,21 +1,32 @@
 import React from 'react'
-import c from './ProfileInfo.module.css'
+import styles from './ProfileInfo.module.css'
+import Preloader from '../../common/Preloader/Preloader'
+import Avatar from '../../../assets/avatar.png'
 
 
 const ProfileInfo = (props) => {
+  if (!props.profile) {
+    return <Preloader />
+  }
   return (
     <div>
-      <div>
-      </div>
-      <div className={c.descriptionBlock}>
-        <img alt="avatar" src={props.avatar} />
+      <div className={styles.descriptionBlock}>
+        <img alt={Avatar} src={props.profile.photos.large} />
         <div>
-        <div>
-          <p>Name: {props.name}</p>
-          <p>Age: {props.age}</p>
-          <p>Current City: {props.city}</p>
-          <p>Date of birth: {props.birth}</p>
-        </div>
+          <p>Name: <strong>{props.profile.fullName}</strong></p>
+          <p>Looking for a job: <strong>{props.profile.lookingForAJobDescription}</strong></p>
+          <p>About Me: <strong>{props.profile.aboutMe}</strong></p>
+          <div className={styles.contacts}>
+            <h3>Contacts:</h3>
+            <p>Facebook: <strong>{props.profile.contacts.facebook}</strong></p>
+            <p>Website: <strong>{props.profile.contacts.website}</strong></p>
+            <p>VK: <strong>{props.profile.contacts.vk}</strong></p>
+            <p>Twitter: <strong>{props.profile.contacts.twitter}</strong> </p>
+            <p>Instagram: <strong>{props.profile.contacts.instagram}</strong> </p>
+            <p>Youtube: <strong>{props.profile.contacts.youtube}</strong> </p>
+            <p>Github: <strong>{props.profile.contacts.github}</strong> </p>
+            <p>mainLink: <strong>X{props.profile.contacts.mainLink}</strong> </p>
+          </div>
         </div>
       </div>
     </div>

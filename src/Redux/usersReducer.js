@@ -1,57 +1,17 @@
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET_USERS'
-const TOGGLE_FOLLOW = 'TOGGLE_FOLLOW'
+const UNMOUNT_USERS = 'UNMOUNT_USERS'
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
+const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT'
+const TOGGLE_IS_FETCHING = 'TOOGLE_IS_FETCHING'
 
 let initialState = {
-  users: [
-    // {
-    //   id: 1,
-    //   avatarUrl: 'https://cdn.icon-icons.com/icons2/1879/PNG/512/iconfinder-7-avatar-2754582_120519.png',
-    //   name: 'Dmitry K.',
-    //   location: {
-    //     country: 'Qazaqstan',
-    //     city: 'Almaty',
-    //   },
-    //   status: 'I\'m looking for a Job right now',
-    //   isFollow: true
-      
-    // },
-    // {
-    //   id: 2,
-    //   avatarUrl: 'https://sibsvaya-nk.ru/wp-content/uploads/2018/08/baba.png',
-    //   name: 'Svetlana D.',
-    //   location: {
-    //     country: 'Qazaqstan',
-    //     city: 'Astana',
-    //   },
-    //   status: 'I am so pretty',
-    //   isFollow: false
-    // },
-    // {
-    //   id: 3,
-    //   avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSFD1Ofi7-DsfgVE7CojIqMuNGYEN1N4dGyec3hJQebtISancyF&usqp=CAU',
-    //   name: 'Sergei S.',
-    //   location: {
-    //     country: 'Ukraine',
-    //     city: 'Kiev',
-    //   },
-    //   status: 'I like football',
-    //   isFollow: false
-    // },
-    // {
-    //   id: 4,
-    //   avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTmHvlQey7sRB-lIKvwZQHlY-Gwi0TIDWloz6LZcCYwdubZ5-nV&usqp=CAU',
-    //   name: 'Andrew T.',
-    //   location: {
-    //     country: 'United States',
-    //     city: 'Philadelphia',
-    //   },
-    //   status: 'I\'m free to help you to create good Video Production',
-    //   isFollow: true
-    // }
-
-  ]
+  users: [],
+  pageSize: 100,
+  totalUsersCount: 0,
+  currentPage: 1,
+  isFetching: true
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -72,29 +32,57 @@ const usersReducer = (state = initialState, action) => {
           return user.id === action.userId ? {...user, isFollow: false } : user
         })
       }
-    // case TOGGLE_FOLLOW:
-    //   return {
-    //     ...state,
-    //     users: state.users.map(user => {
-    //       return user.id === action.userId ? {...user, isFollow: !user.isFollow} : user
-    //     })
-    //   }
       
     case SET_USERS:
       return {
         ...state,
-        users: [...state.users, ...action.users]
+        users: [...action.users]
       }
+
+    case UNMOUNT_USERS:
+      return {
+        ...state,
+        users: []
+      }
+
+    case SET_CURRENT_PAGE: 
+      return {
+        ...state,
+        currentPage: action.currentPage,
+        users: []
+      }
+
+    case SET_TOTAL_USERS_COUNT: 
+      return {
+        ...state,
+        totalUsersCount: action.totalUsersCount
+      }
+    case TOGGLE_IS_FETCHING: 
+      return {
+        ...state,
+        isFetching: action.isFetching
+      }
+
+
     default:
       return state
   }
 }
 
 
-export const followActionCreator = (userId) => ({ type: FOLLOW, userId })
+export const follow = (userId) => ({ type: FOLLOW, userId })
 
-export const unfollowActionCreator = (userId) => ({ type: UNFOLLOW,userId })
+export const unfollow = (userId) => ({ type: UNFOLLOW,userId })
 
-export const setUsersActionCreator = users => ({ type: SET_USERS, users })
+export const setUsers = users => ({ type: SET_USERS, users })
+
+export const unmountUsers = () => ({type: UNMOUNT_USERS})
+
+export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage})
+
+export const setTotalUsersCount = totalUsersCount => ({type: SET_TOTAL_USERS_COUNT, totalUsersCount })
+
+export const toggleIsFetching = isFetching => ({type: TOGGLE_IS_FETCHING, isFetching })
+
 
 export default usersReducer

@@ -1,6 +1,10 @@
+.users {
+  margin: 25px 0 0 25px;
+}
+
 .userProfile {
   display: grid;
-  margin: 25px 0 0 25px;
+  margin: 25px 0;
   grid-template-columns: 225px 1fr;
   grid-template-areas: 'avatar description';
   background-color: rgb(249, 249, 249);
@@ -10,10 +14,20 @@
   -moz-border-radius: 50px;
   -ms-border-radius: 50px;
   -o-border-radius: 50px;
+  transition: background-color linear 0.3s;
+  -webkit-transition: background-color linear 0.3s;
+  -moz-transition: background-color linear 0.3s;
+  -ms-transition: background-color linear 0.3s;
+  -o-transition: background-color linear 0.3s;
+}
+
+.userProfile:hover {
+  background-color: rgb(235, 235, 235);
 }
 
 .avatar img {
-  width: 225px;
+  width: 150px;
+  height: 150px
 }
 
 .avatar {
@@ -23,14 +37,28 @@
 }
 
 .avatar button {
-  font-size: 30px;
+  font-size: 25px;
   color: white;
   background-color: rgb(122, 106, 99);
   border: 2px solid black;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
 }
 
 .users .description {
   margin-left: 25px;
   grid-area: description;
-  font-size: 30px;
+  font-size: 25px;
+}
+
+.pages {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.selectedPage {
+  font-weight: bold;
 }

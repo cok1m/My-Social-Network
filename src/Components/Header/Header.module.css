@@ -2,7 +2,7 @@
   grid-area: header;
   background-color: rgb(59, 50, 46);
   display: grid;
-  grid-template-columns: 100px 1fr;
+  grid-template-columns: 1fr 1fr 10fr;
   gap: 10px;
 }
 
@@ -16,4 +16,31 @@
   color: rgb(211, 211, 211);
   align-self: center;
   justify-self: start;
+}
+
+.loginBlock {
+  justify-self: right;
+  align-self: center;
+}
+
+.loginBlock > a {
+  color: white;
+  text-decoration: none;
+  font-size: 25px;
+  margin-right: 20px;
+  transition: color linear 0.1s;
+  -webkit-transition: color linear 0.1s;
+  -moz-transition: color linear 0.1s;
+  -ms-transition: color linear 0.1s;
+  -o-transition: color linear 0.1s;
+}
+
+.loginBlock > p {
+  color: white;
+  font-size: 25px;
+  margin-right: 20px;
+}
+
+.loginBlock > a:hover {
+  color: rgb(150, 150, 150);
 }
