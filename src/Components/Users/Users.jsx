@@ -5,6 +5,8 @@ import Preloader from "../common/Preloader/Preloader";
 import { NavLink } from "react-router-dom";
 
 let Users = (props) => {
+
+  
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
   let pages = [];
 
@@ -18,10 +20,8 @@ let Users = (props) => {
         {pages.map((page) => {
           return (
             <span
-              onClick={() => {
-                props.onPageChanged(page);
-              }}
-              className={props.currentPage === page && styles.selectedPage}
+              onClick={() => { props.onPageChanged(page) }}
+              className={(props.currentPage === page && styles.selectedPage) + " " + styles.currentPage }
             >
               {page + " "}
             </span>
@@ -36,31 +36,26 @@ let Users = (props) => {
               <div>
                 <NavLink to={`/profile/${user.id}`}>
                 <img
-                  src={
-                    user.photos.small != null ? user.photos.small : userPhoto
-                  }
+                  src={user.photos.small != null ? user.photos.small : userPhoto}
                   alt=""
                 />
                 </NavLink>
               </div>
               <div>
-                {user.isFollow ? (
-                  <button
-                    onClick={() => {
-                      props.unfollow(user.id);
-                    }}
-                  >
-                    Unfollow
-                  </button>
-                ) : (
-                  <button
-                    onClick={() => {
-                      props.follow(user.id);
-                    }}
-                  >
-                    Follow
-                  </button>
-                )}
+                {user.followed 
+                  ? <button 
+                      disabled={props.followingInProgress.some(id => id === user.id)} 
+                      onClick={() => props.unfollow(user.id)}
+                    >
+                      Unfollow
+                    </button>
+                  :
+                    <button 
+                      disabled={props.followingInProgress.some(id => id === user.id)} 
+                      onClick={() => props.follow(user.id)} >
+                        Follow
+                    </button>
+                }
               </div>
             </div>
             <div className={styles.description}>

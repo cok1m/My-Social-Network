@@ -1,0 +1,18 @@
+.formControl {
+  display: grid;
+  grid-template-columns: 200px 200px;
+}
+
+
+.formControl.error input,
+.formControl.error textarea {
+  border: 2px solid red;
+}
+
+.formControl.error span {
+  margin-left: 5px;
+  width: 200px;
+  color: red;
+  font-size: 15px;
+  align-self: center;
+}
