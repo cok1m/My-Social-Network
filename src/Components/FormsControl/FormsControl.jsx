@@ -1,12 +1,14 @@
 import React from 'react'
 import styles from './FormsControl.module.css'
 
-export const Textarea = ({input, placeholder, meta, ...props}) => {
+export const FormElement = Element => ({input, placeholder, meta, type, ...props}) => {
   const hasError = meta.touched && meta.error
-
   return (
     <div className={styles.formControl + ' ' + (hasError ? styles.error : "")}>
-      <textarea {...input}placeholder={placeholder} />
+      <Element {...input} 
+        placeholder={placeholder} 
+        type={type}  
+      />
       {hasError && <span>{meta.error}</span>}
     </div> 
   )

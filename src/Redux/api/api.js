@@ -42,12 +42,28 @@ export const profileAPI = {
     })
     return response
   }
-} 
+}
+
+
 
 export const authAPI  = {
   authMe: async () => {
     let response = await axios.get('auth/me')
     return response.data
+  },
+
+  login: async (email, password, rememberMe = false) => {
+    let response = await axios.post('auth/login', {
+      email,
+      password,
+      rememberMe
+    })
+    return response
+  },
+
+  logout: async () => {
+    let response = await axios.delete('auth/login')
+    return response
   }
 
 }
