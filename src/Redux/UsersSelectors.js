@@ -1,4 +1,7 @@
-export const getUsers = (state) => {
+import { createSelector } from "reselect"
+import { createSelectorHook } from "react-redux"
+
+const getUsersSelector = (state) => {
   return state.usersPage.users
 }
 
@@ -21,3 +24,7 @@ export const getIsFetching = (state) => {
 export const getFollowingInProgress = (state) => {
   return state.usersPage.followingInProgress
 }
+
+export const getUsers = createSelector(getUsersSelector, (users) => {
+  return users.filter(u => true)
+})

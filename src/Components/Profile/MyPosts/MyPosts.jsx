@@ -8,7 +8,8 @@ import { FormElement } from "../../FormsControl/FormsControl";
 let Textarea = FormElement('textarea')
 export const maxLength15 = maxLength(15)
 
-const MyPosts = (props) => {
+const MyPosts = React.memo(props => {
+  console.log('YOYOYOY')
   let postsElements = props.posts.map((post) => (
     <Post key={post.id} message={post.message} likesCount={post.likesCount} />
   ));
@@ -27,7 +28,7 @@ const MyPosts = (props) => {
       <div className={styles.posts}>{postsElements}</div>
     </div>
   );
-};
+});
 
 const AddPostForm = (props) => {
   return (

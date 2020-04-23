@@ -14,10 +14,15 @@ import { connect } from 'react-redux';
 import {initializeApp} from './Redux/appReducer'
 import { compose } from 'redux';
 import Preloader from './Components/common/Preloader/Preloader';
+import store from './Redux/redux-store';
 
 class App extends React.Component {
   componentDidMount() {
     this.props.initializeApp()
+
+    setInterval(() => {
+      store.dispatch({type: 'FAKE'})
+    }, 1000)
   }
 
   render() {

@@ -18,10 +18,6 @@ class UsersContainer extends React.Component {
     console.log('constructor');
   }
 
-  componentDidUpdate = () => {
-    console.log('DidUpdate');
-  };
-
   componentDidMount = () => {
     console.log('DidMount');
     this.props.getUsers(this.props.currentPage, this.props.pageSize)
@@ -33,6 +29,7 @@ class UsersContainer extends React.Component {
   }
 
   render() {
+    console.log('render')
     return (
       <Users 
         users={this.props.users}
@@ -51,6 +48,7 @@ class UsersContainer extends React.Component {
 
 
 let mapStateToProps = (state) => {
+  console.log('MapStateToProps')
   return {
     users: getUsers(state),
     pageSize: getPageSize(state),
