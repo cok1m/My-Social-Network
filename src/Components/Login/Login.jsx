@@ -8,9 +8,9 @@ import styles from '../FormsControl/FormsControl.module.css'
 const Input = FormElement('input')
 const maxLength30 = maxLength(30)
 
-const LoginForm = (props) => {
+const LoginForm = ({handleSubmit, error}) => {
   return (
-    <form onSubmit={props.handleSubmit} >
+    <form onSubmit={handleSubmit} >
         <div>
           <Field placeholder={"Email"} name={"email"} component={Input} 
             validate={[required, maxLength30]}
@@ -24,8 +24,8 @@ const LoginForm = (props) => {
         <div>
           <Field component={Input} name={"rememberMe"} type="checkbox"/> remember me
         </div>
-        {props.error && <div className={styles.formSummaryError}>
-          {props.error}
+        {error && <div className={styles.formSummaryError}>
+          {error}
         </div>}
         <div>
           <button>Login</button>
@@ -37,13 +37,13 @@ const LoginForm = (props) => {
 
 const LoginReduxForm = reduxForm({ form: 'login' })(LoginForm)
 
-const Login = (props) => {
+const Login = ({login, isAuth}) => {
   const onSubmit = (formData) => {
     let {email, password, rememberMe} = formData
-    props.login(email, password, rememberMe)
+    login(email, password, rememberMe)
   }
 
-  if (props.isAuth) {
+  if (isAuth) {
     return <Redirect to="/profile" />
   } else  {
     return (

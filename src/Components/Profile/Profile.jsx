@@ -4,7 +4,7 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 class Profile extends React.Component {
 
-  shouldComponentUpdate = (nextProps, nextState) => {
+  shouldComponentUpdate = (nextProps) => {
     if (nextProps !== this.props) {
       return true
     }  
@@ -12,7 +12,6 @@ class Profile extends React.Component {
 
 
   render() {
-    console.log('ProfileRender')
     return (
       <div>
         <ProfileInfo
@@ -27,17 +26,3 @@ class Profile extends React.Component {
 }
 
 export default Profile;
-
-// const Profile = (props) => {
-//   console.log("ProfileRender");
-//   return (
-//     <div>
-//       <ProfileInfo
-//         profile={props.profile}
-//         status={props.status}
-//         updateStatus={props.updateStatus}
-//       />
-//       <MyPostsContainer />
-//     </div>
-//   );
-// };

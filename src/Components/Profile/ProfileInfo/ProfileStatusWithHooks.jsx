@@ -6,7 +6,6 @@ const ProfileStatusWithHooks = (props) =>  {
   
   useEffect(() => {
     setStatus(props.status)
-    console.log('useEffect')
   }, [props.status])
 
   const activateEditMode = () => {
@@ -23,7 +22,6 @@ const ProfileStatusWithHooks = (props) =>  {
     setStatus(event.currentTarget.value)
   }
 
-  console.log("render")
   return (
     <div>
       { !editMode &&

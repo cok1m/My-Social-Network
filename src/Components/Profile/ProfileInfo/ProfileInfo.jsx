@@ -4,32 +4,33 @@ import Preloader from '../../common/Preloader/Preloader'
 import Avatar from '../../../assets/avatar.png'
 import ProfileStatusWithHooks from './ProfileStatusWithHooks'
 
-const ProfileInfo = (props) => {
-  if (!props.profile) {
+const ProfileInfo = ({profile, status, updateStatus}) => {
+  if (!profile) {
     return <Preloader />
   }
+  let contacts = profile.contacts
   return (
     <div>
       <div className={styles.descriptionBlock}>
-        <img alt='' src={props.profile.photos.large || Avatar} />
+        <img alt='' src={profile.photos.large || Avatar} />
         <div>
-          <p>Name: <strong>{props.profile.fullName}</strong></p>
+          <p>Name: <strong>{profile.fullName}</strong></p>
           <ProfileStatusWithHooks 
-            status={props.status}
-            updateStatus={props.updateStatus}
+            status={status}
+            updateStatus={updateStatus}
           />
-          <p>Looking for a job: <strong>{props.profile.lookingForAJobDescription}</strong></p>
-          <p>About Me: <strong>{props.profile.aboutMe}</strong></p>
+          <p>Looking for a job: <strong>{profile.lookingForAJobDescription}</strong></p>
+          <p>About Me: <strong>{profile.aboutMe}</strong></p>
           <div className={styles.contacts}>
             <h3>Contacts:</h3>
-            <p>Facebook: <strong>{props.profile.contacts.facebook}</strong></p>
-            <p>Website: <strong>{props.profile.contacts.website}</strong></p>
-            <p>VK: <strong>{props.profile.contacts.vk}</strong></p>
-            <p>Twitter: <strong>{props.profile.contacts.twitter}</strong> </p>
-            <p>Instagram: <strong>{props.profile.contacts.instagram}</strong> </p>
-            <p>Youtube: <strong>{props.profile.contacts.youtube}</strong> </p>
-            <p>Github: <strong>{props.profile.contacts.github}</strong> </p>
-            <p>mainLink: <strong>{props.profile.contacts.mainLink}</strong> </p>
+            <p>Facebook: <strong>{contacts.facebook}</strong></p>
+            <p>Website: <strong>{contacts.website}</strong></p>
+            <p>VK: <strong>{contacts.vk}</strong></p>
+            <p>Twitter: <strong>{contacts.twitter}</strong> </p>
+            <p>Instagram: <strong>{contacts.instagram}</strong> </p>
+            <p>Youtube: <strong>{contacts.youtube}</strong> </p>
+            <p>Github: <strong>{contacts.github}</strong> </p>
+            <p>mainLink: <strong>{contacts.mainLink}</strong> </p>
           </div>
         </div>
       </div>

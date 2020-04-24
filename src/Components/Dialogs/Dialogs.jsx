@@ -4,16 +4,16 @@ import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Messages/Message";
 import AddMessageForm from "./AddMessageForm/AddMessageForm";
 
-const Dialogs = (props) => {
+const Dialogs = ({dialogs, messages, sendMessage}) => {
   let addNewMessage = (values) => {
-    props.sendMessage(values.newMessageBody);
+    sendMessage(values.newMessageBody);
   };
 
-  let dialogsElements = props.dialogs.map((dialog) => {
+  let dialogsElements = dialogs.map((dialog) => {
     return <DialogItem name={dialog.name} key={dialog.id} id={dialog.id} />;
   });
 
-  let messagesElements = props.messages.map((message) => {
+  let messagesElements = messages.map((message) => {
     return <Message message={message.message} key={message.id} />;
   });
 
