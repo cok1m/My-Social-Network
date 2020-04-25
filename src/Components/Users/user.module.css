@@ -46,6 +46,8 @@
 }
 
 .userProfile .description {
+  max-width: 500px;
+  overflow: hidden;
   margin-left: 25px;
   grid-area: description;
   font-size: 25px;

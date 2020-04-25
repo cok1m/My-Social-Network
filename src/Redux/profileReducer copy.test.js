@@ -31,3 +31,4 @@ it('should be 2', () => {
     let newState = profileReducer(state, action)
   expect(newState.posts.length).toBe(2);
 }) 
+

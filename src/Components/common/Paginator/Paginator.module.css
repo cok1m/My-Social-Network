@@ -1,16 +1,37 @@
-.pages {
+.paginator {
   font-size: 20px;
   cursor: pointer;
+  margin-top: 20px;
+  margin-left: 20px;
 }
 
+.paginator span {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  border: 1px solid white;
+}
 
-.pages span:hover {
+.paginator span:hover {
   border: 1px solid black;
   border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
+}
+
+.paginator button {
+  border: 1px solid black;
+  height: 30px;
+  width: 60px;
+  visibility: visible;
+  margin-left: 5px;
+}
+
+.buttonVisible {
+  visibility: hidden;
 }
 
 .selectedPage {

@@ -22,7 +22,7 @@ const LoginForm = ({handleSubmit, error}) => {
           />
         </div>
         <div>
-          <Field component={Input} name={"rememberMe"} type="checkbox"/> remember me
+          <Field component={Input} name={"rememberMe"} type="checkbox"/><span>remember me</span> 
         </div>
         {error && <div className={styles.formSummaryError}>
           {error}

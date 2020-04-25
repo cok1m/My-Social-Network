@@ -5,12 +5,12 @@ import Preloader from "../common/Preloader/Preloader";
 
 let Users = ({ isFetching, users, followingInProgress,
   unfollow, follow,
-  totalUsersCount, pageSize, onPageChanged, currentPage
+  totalItemsCount, pageSize, onPageChanged, currentPage
   }) => {
   return (
     <div>
       <Paginator 
-        totalUsersCount={totalUsersCount}
+        totalItemsCount={totalItemsCount}
         pageSize={pageSize}
         onPageChanged={onPageChanged}
         currentPage={currentPage}  

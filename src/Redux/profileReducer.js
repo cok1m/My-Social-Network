@@ -47,7 +47,7 @@ const profileReducer = (state = initialState, action) => {
   }
 }
 
-export const deletePost = (postId => ({type: DELETE_POST, postId}))
+export const deletePost = postId => ({type: DELETE_POST, postId})
 export const addPost = (newText) => ({ type: ADD_POST, newText })
 export const updateNewPostText = text => ({ type: UPDATE_NEW_POST_TEXT, newText: text }) 
 export const setStatus = status => ({ type: SET_STATUS, status })

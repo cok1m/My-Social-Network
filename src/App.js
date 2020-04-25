@@ -1,19 +1,22 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import './App.css';
-import { Route, withRouter } from 'react-router-dom';
+import { Route, withRouter, BrowserRouter } from 'react-router-dom';
 import Music from './Components/Music/Music';
 import News from './Components/News/News';
 import Options from './Components/Options/Options';
 import Navbar from './Components/Navbar/Navbar';
-import DialogsContainer from './Components/Dialogs/DialogsContainer';
 import Users from './Components/Users/UsersContainer';
-import ProfileContainer from './Components/Profile/ProfileContainer';
 import HeaderContainer from './Components/Header/HeaderContainer';
 import Login from './Components/Login/LoginContainer';
-import { connect } from 'react-redux';
+import { connect, Provider } from 'react-redux';
 import {initializeApp} from './Redux/appReducer'
 import { compose } from 'redux';
 import Preloader from './Components/common/Preloader/Preloader';
+import store from './Redux/redux-store';
+import withSuspense from './Components/hoc/withSuspense';
+
+const DialogsContainer = React.lazy(() => import('./Components/Dialogs/DialogsContainer'))
+const ProfileContainer = React.lazy(() => import('./Components/Profile/ProfileContainer'))
 
 class App extends React.Component {
   componentDidMount() {
@@ -28,10 +31,10 @@ class App extends React.Component {
         <Navbar />
         <div className='app-wrapper-content'>
           <Route path='/profile/:userId?' 
-                render={ () => <ProfileContainer /> } 
+                render={withSuspense(ProfileContainer) }
           />
           <Route path='/dialogs' 
-                render={() => <DialogsContainer /> }
+                render={withSuspense(DialogsContainer) }
           />
           <Route path='/news' render={() => <News /> } />
           <Route path='/music' render={() => <Music /> } />
@@ -46,8 +49,19 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => ({initialized: state.app.initialized}) 
 
-export default compose(
+let AppContainer = compose(
   withRouter, 
   connect(mapStateToProps, {initializeApp}))(App)
 
 
+const MainApp = (props) => {
+  return (
+    <BrowserRouter>
+    <Provider store={store}>
+      <AppContainer />
+    </Provider>
+  </BrowserRouter>
+  )
+}
+
+export default MainApp

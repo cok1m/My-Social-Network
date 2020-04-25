@@ -8,9 +8,9 @@ import { FormElement } from "../../FormsControl/FormsControl";
 let Textarea = FormElement('textarea')
 export const maxLength15 = maxLength(15)
 
-const MyPosts = React.memo(({posts, addPost}) => {
+const MyPosts = React.memo(({posts, addPost, deletePost}) => {
   let postsElements = posts.map((post) => (
-    <Post key={post.id} message={post.message} likesCount={post.likesCount} />
+    <Post key={post.id} message={post.message} likesCount={post.likesCount} deletePost={deletePost} postId={post.id}/>
   ));
 
   let onAddPost = (values) => {
@@ -24,7 +24,9 @@ const MyPosts = React.memo(({posts, addPost}) => {
       <div>
         <AddPostFormRedux onSubmit={onAddPost} />
       </div>
-      <div className={styles.posts}>{postsElements}</div>
+      <div className={styles.posts}>
+        {postsElements}
+      </div>
     </div>
   );
 });
