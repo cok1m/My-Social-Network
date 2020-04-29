@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
-import styles from "./Paginator.module.css";
+import React, { useState } from "react";
+import styles from "./Paginator.module.sass";
+import cn from "classnames";
 
 let Paginator = ({
   onPageChanged,
@@ -21,32 +22,39 @@ let Paginator = ({
 
   return (
     <div className={styles.paginator}>
-      {portionNumber > 1 &&
+      {portionNumber > 1 && (
         <button onClick={() => setPortionNumber(portionNumber - 1)}>
           PREV
         </button>
-      }
+      )}
       {pages
-        .filter(page => page >= leftPortionPageNumber && page <= rightPortionPageNumber)
+        .filter(
+          (page) =>
+            page >= leftPortionPageNumber && page <= rightPortionPageNumber
+        )
         .map((page) => {
-        return (
-          <span
-            key={page}
-            onClick={() => {
-              onPageChanged(page);
-            }}
-            className={
-              (currentPage === page && styles.selectedPage) +
-              " " +
-              styles.currentPage
-            }
-          >
-            {page + " "}
-          </span>
-        );
-      })}
-      {portionCount > portionNumber &&
-      <button onClick={() => setPortionNumber(portionNumber + 1)}>NEXT</button> }
+          return (
+            <span
+              key={page}
+              onClick={() => {
+                onPageChanged(page);
+              }}
+              className={cn(
+                {
+                  [styles.selectedPage]: currentPage === page,
+                },
+                styles.paginator__page
+              )}
+            >
+              {page + " "}
+            </span>
+          );
+        })}
+      {portionCount > portionNumber && (
+        <button onClick={() => setPortionNumber(portionNumber + 1)}>
+          NEXT
+        </button>
+      )}
     </div>
   );
 };

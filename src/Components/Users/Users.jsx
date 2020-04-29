@@ -9,24 +9,24 @@ let Users = ({ isFetching, users, followingInProgress,
   }) => {
   return (
     <div>
-      <Paginator 
+      <Paginator
         totalItemsCount={totalItemsCount}
         pageSize={pageSize}
         onPageChanged={onPageChanged}
-        currentPage={currentPage}  
+        currentPage={currentPage}
       />
       <div>
         {isFetching && <Preloader />}
         {users.map((user) => {
-          return(
-            <User 
+          return (
+            <User
               key={user.id}
               user={user}
               followingInProgress={followingInProgress}
               unfollow={unfollow}
               follow={follow}
             />
-          )
+          );
         })}
       </div>
     </div>

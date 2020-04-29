@@ -1,21 +1,31 @@
 .descriptionBlock {
   display: grid;
-  grid-template-columns: 450px 1fr;
-  margin: 10px;
+  grid-template-columns: 550px 1fr;
+  align-items: center;
+  margin: 10px 0 0 10px;
 }
 
-.descriptionBlock img {
-  width: 400px;
+
+.descriptionBlock .mainPhoto img {
+  width: 500px;
 }
 
-.descriptionBlock p:first-child {
-  font-size: 25px;
-}
 
-.descriptionBlock p {
+.descriptionBlock .profileInfo {
   font-size: 20px;
 }
 
 .contacts {
-  line-height: 5px;
+  margin-top: 20px;
+  line-height: 1.5em;
+}
+
+.contact{
+  font-size: 18px;
+  line-height: 1.5em;
+}
+
+.formSummaryError {
+  padding: 5px;
+  color: red
 }

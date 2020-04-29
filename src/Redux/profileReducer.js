@@ -1,4 +1,5 @@
 import { profileAPI } from "./api/api";
+import { stopSubmit } from "redux-form";
 
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
@@ -12,7 +13,7 @@ let initialState = {
     {id: 2, message: 'It\'s my first post', likesCount: 20},
   ],
   profile: null,
-  status: ''
+  status: '',
 }
 
 let id = 3;
@@ -42,6 +43,7 @@ const profileReducer = (state = initialState, action) => {
         ...state,
         posts: state.posts.filter(post => post.id !== action.postId)
       }
+
     default: 
       return state;
   }
@@ -70,4 +72,24 @@ export const updateStatus = status => async dispatch => {
   }
 }
 
+export const updateProfile = (profile) => async (dispatch, getState) => {
+  const userId = getState().auth.userId
+  let response = await profileAPI.updateProfileInfo(profile)
+  if (response.data.resultCode === 0) {
+    dispatch(getUserProfile(userId))
+  } else {
+    let field = response.data.messages[0];
+    field = field.split('->')[1].slice(0, -1).toLowerCase()
+    dispatch(stopSubmit("editProfile",{"contacts": {[field]: 'Invalid Format'}}))
+    return Promise.reject()  
+  }
+}
+
+export const saveProfilePhoto = (photoFile) => async (dispatch, getState) => {
+  const userId = getState().auth.userId
+  let response = await profileAPI.saveProfilePhoto(photoFile)
+  if (response.data.resultCode === 0) {
+    dispatch(getUserProfile(userId))
+  }
+}
 export default profileReducer

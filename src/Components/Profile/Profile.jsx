@@ -10,14 +10,16 @@ class Profile extends React.Component {
     }  
   }
 
-
   render() {
     return (
       <div>
         <ProfileInfo
+          isOwner={this.props.isOwner}
           profile={this.props.profile}
           status={this.props.status}
           updateStatus={this.props.updateStatus}
+          updateProfile={this.props.updateProfile}
+          saveProfilePhoto={this.props.saveProfilePhoto}
         />
         <MyPostsContainer />
       </div>

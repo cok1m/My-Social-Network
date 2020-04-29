@@ -1,11 +1,11 @@
-import React from 'react'
-import { maxLength, required } from '../../../utilities/validators';
-import { FormElement } from '../../FormsControl/FormsControl';
-import { Field, reduxForm } from 'redux-form';
+import React from "react";
+import { maxLength, required } from "../../../utilities/validators";
+import { FormElement } from "../../FormsControl/FormsControl";
+import { Field, reduxForm } from "redux-form";
 
-const Textarea = FormElement('textarea')
+const Textarea = FormElement("textarea");
 
-const maxLength50 = maxLength(50)
+const maxLength50 = maxLength(50);
 
 const AddMessageForm = (props) => {
   return (
@@ -14,7 +14,7 @@ const AddMessageForm = (props) => {
         <Field
           autoFocus={true}
           component={Textarea}
-          name={'newMessageBody'}
+          name={"newMessageBody"}
           placeholder="Введите текст"
           validate={[required, maxLength50]}
         />
@@ -26,4 +26,4 @@ const AddMessageForm = (props) => {
   );
 };
 
-export default reduxForm({ form: 'dialogAddMessageForm'})(AddMessageForm)
+export default reduxForm({ form: "dialogAddMessageForm" })(AddMessageForm);

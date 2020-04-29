@@ -4,7 +4,7 @@ import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Messages/Message";
 import AddMessageForm from "./AddMessageForm/AddMessageForm";
 
-const Dialogs = ({dialogs, messages, sendMessage}) => {
+const Dialogs = ({ dialogs, messages, sendMessage }) => {
   let addNewMessage = (values) => {
     sendMessage(values.newMessageBody);
   };
@@ -29,7 +29,5 @@ const Dialogs = ({dialogs, messages, sendMessage}) => {
     </div>
   );
 };
-
-
 
 export default Dialogs;

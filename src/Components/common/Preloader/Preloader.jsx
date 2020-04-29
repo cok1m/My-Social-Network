@@ -1,6 +1,6 @@
 import React from "react";
 import preloader from "../../../assets/preloader.gif";
-import styles from "./Preloader.module.css";
+import styles from "./Preloader.module.sass";
 
 let Preloader = (props) => {
   return (
