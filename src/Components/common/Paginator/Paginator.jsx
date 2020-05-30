@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./Paginator.module.sass";
 import cn from "classnames";
 
-let Paginator = ({
+export default ({
   onPageChanged,
   currentPage,
   totalItemsCount,
@@ -58,5 +58,3 @@ let Paginator = ({
     </div>
   );
 };
-
-export default Paginator;
